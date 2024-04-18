@@ -21,12 +21,8 @@ public class Product {
     @JoinColumn(name="inventory_id")
     private Inventory inventory;
 
-    @ManyToMany
-    @JoinTable(
-            name = "product_category",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
-    private Set<Category> categories = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
 
 }
