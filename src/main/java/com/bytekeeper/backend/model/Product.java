@@ -1,6 +1,8 @@
 package com.bytekeeper.backend.model;
 
 import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="Product")
@@ -16,7 +18,15 @@ public class Product {
     private Integer quantity;
 
     @ManyToOne
-    @JoinColumn(name="list_id")
-    private List list;
+    @JoinColumn(name="inventory_id")
+    private Inventory inventory;
+
+    @ManyToMany
+    @JoinTable(
+            name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories = new HashSet<>();
 
 }

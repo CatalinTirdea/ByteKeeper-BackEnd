@@ -1,12 +1,11 @@
 package com.bytekeeper.backend.model;
 
 import jakarta.persistence.*;
-
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "List")
-public class List {
+@Table(name = "Inventory")
+public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,8 +13,8 @@ public class List {
     @Column(name = "Name")
     private String name;
 
-    @OneToMany(mappedBy="list")
-    private ArrayList<Product> products;
+    @OneToMany(mappedBy="inventory")
+    private List<Product> products;
 
     @ManyToOne
     @JoinColumn(name="user_id")

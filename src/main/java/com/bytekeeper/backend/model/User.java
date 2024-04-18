@@ -1,8 +1,7 @@
 package com.bytekeeper.backend.model;
 
 import jakarta.persistence.*;
-
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="User")
@@ -23,5 +22,5 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private ArrayList<List> lists;
+    private List<Inventory> inventories;
 }
