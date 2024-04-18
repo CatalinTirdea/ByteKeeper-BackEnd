@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="User")
+@Table(name="\"User\"")  // User trebuie intre "" pentru ca e cuvant rezervat in Postgres
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
