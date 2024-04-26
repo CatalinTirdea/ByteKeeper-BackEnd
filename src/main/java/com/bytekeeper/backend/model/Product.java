@@ -1,9 +1,14 @@
 package com.bytekeeper.backend.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.HashSet;
 import java.util.Set;
-
+@Setter
+@Getter
 @Entity
 @Table(name="Product")
 public class Product {
@@ -11,11 +16,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(name = "Name")
     private String name;
 
+
     @Column(name = "Quantity")
     private Integer quantity;
+
 
     @ManyToOne
     @JoinColumn(name="inventory_id")
@@ -28,40 +36,24 @@ public class Product {
     @JoinColumn(name="category_id")
     private Category category;
 
-    public Long getId() {
-        return id;
+
+    public void displayDetails() {
+        System.out.println("Detalii despre produs:");
+        System.out.println("ID: " + this.id);
+        System.out.println("Nume: " + this.name);
+        System.out.println("Cantitate: " + this.quantity);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
+    public void changeProduct(String newName, Integer newQuantity) {
+        if (newName != null) {
+            this.name = newName;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        if (newQuantity != null) {
+            this.quantity = newQuantity;
+        }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
-
-    public Category getCategory() {
-        return category;
     }
 
     public void setCategory(Category category) {

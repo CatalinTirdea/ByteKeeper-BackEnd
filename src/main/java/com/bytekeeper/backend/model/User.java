@@ -1,8 +1,13 @@
 package com.bytekeeper.backend.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Setter
+@Getter
 @Entity
 @Table(name="\"User\"")  // User trebuie intre "" pentru ca e cuvant rezervat in Postgres
 public class User {
@@ -12,6 +17,7 @@ public class User {
 
     @Column(name = "FirstName")
     private String firstName;
+
     @Column(name = "LastName")
     private String lastName;
 
@@ -23,4 +29,17 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Inventory> inventories;
+
+    public void deleteInventory(Inventory inventory) {
+        inventories.remove(inventory);  // Stergem invetarul
+        inventory.setUser(null); // Stergem userul de la inventarul respectiv
+    }
+
+    public void deleteProductFromInventory(Inventory inventory, Product product) {
+        if (inventory != null && inventory.getProducts() != null) {
+            inventory.getProducts().remove(product);                //    Verifica daca inventarul exista si daca acesta nu este gol apoi sterge produsul respectiv.
+        }
+    }
+
+
 }

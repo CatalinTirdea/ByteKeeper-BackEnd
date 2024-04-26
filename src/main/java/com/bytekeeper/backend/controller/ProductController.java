@@ -6,7 +6,6 @@ import com.bytekeeper.backend.service.ProductService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import java.util.Optional;
 @RequestMapping(value="/products")
 @RestController
 public class ProductController {
+
     private final ProductService productService;
 //    private final CategoryService categoryService;
 
@@ -31,8 +31,9 @@ public class ProductController {
 
     @GetMapping(value = "/id/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        var res = productService.getProductById(id);
-        return res.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return productService.getProductById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping(value="/getCategories", produces="application/json")
@@ -58,7 +59,20 @@ public class ProductController {
 //        product.setInventory(productRequest.getInventory());
         product.setName(productRequest.getName());
         productService.addProduct(product);
+    }
+  
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
+        Product updated = productService.updateProduct(id, updatedProduct);
+        if (updated != null) {
+            return ResponseEntity.ok(updated);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 }

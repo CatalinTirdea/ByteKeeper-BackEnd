@@ -1,8 +1,12 @@
 package com.bytekeeper.backend.model;
 
 import jakarta.persistence.*;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.List;
+@Getter
+@Setter
 @Entity
 @Table(name = "Inventory")
 public class Inventory {
@@ -20,35 +24,13 @@ public class Inventory {
     @JoinColumn(name="user_id")
     private User user;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    public User getUser() {
-        return user;
-    }
 
     public void setUser(User user) {
         this.user = user;
+        if (user != null) {
+            user.getInventories().add(this); // Adăugăm inventarul în lista de inventare a utilizatorului
+        }
     }
+
 }
