@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-@RestController
 @RequestMapping("/inventories")
+@RestController
 public class InventoryController {
     private final InventoryService inventoryService;
 
@@ -19,18 +18,18 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<Inventory> getAllInventories() {
         return inventoryService.getAllInventories();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Inventory> getInventoryById(@PathVariable Long id) {
         var res = inventoryService.getInventoryById(id);
         return res.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/add-inventory")
+    @PostMapping(value="/add", consumes="application/json", produces="application/json")
     public ResponseEntity<?> addInventory(@RequestBody Inventory inventoryRequest) {
         Inventory inventory = new Inventory();
         inventory.setName(inventoryRequest.getName());

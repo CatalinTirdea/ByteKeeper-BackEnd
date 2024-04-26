@@ -29,6 +29,8 @@ public class Product {
     @JoinColumn(name="inventory_id")
     private Inventory inventory;
 
+    @Transient
+    private Long categoryId;
 
     @ManyToOne
     @JoinColumn(name="category_id")
@@ -54,5 +56,15 @@ public class Product {
 
     }
 
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
 }
