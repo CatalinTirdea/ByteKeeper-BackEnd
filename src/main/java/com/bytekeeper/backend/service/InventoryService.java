@@ -42,4 +42,8 @@ public class InventoryService {
     public void deleteInventory(Long id) {
         repository.deleteById(id);
     }
+
+    public List<Inventory> searchInventoryByName(String name) {
+        return repository.findByNameLikeIgnoreCaseAndVisibilityEquals(name, "public");
+    }
 }

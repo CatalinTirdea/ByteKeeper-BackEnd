@@ -37,21 +37,6 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping(value="/getCategories", produces="application/json")
-    public ResponseEntity<ArrayList<Categ>> getCategories() {
-        ArrayList<Categ> jsonArray = new ArrayList<>();
-        /* pentru cand e facut service pentru Category
-        List<Category> categories = categoryService.getAllCategories();
-        for (var category : categories) {
-            categories.add(new Categ(category.getName(), category.getId()));
-        }*/
-
-        jsonArray.add(new Categ("Food", 1L));
-        jsonArray.add(new Categ("Electronics", 2L));
-        jsonArray.add(new Categ("Sports", 3L));
-        return ResponseEntity.ok(jsonArray);
-    }
-
     @PostMapping(value="/add", consumes="application/json", produces="application/json")
     public ResponseEntity<?> addProduct(@RequestBody Product productRequest) {
         Product product = new Product();
