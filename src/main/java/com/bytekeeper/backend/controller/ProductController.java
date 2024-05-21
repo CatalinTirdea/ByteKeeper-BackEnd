@@ -6,6 +6,7 @@ import com.bytekeeper.backend.service.ProductService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
@@ -59,9 +60,10 @@ public class ProductController {
 //        product.setInventory(productRequest.getInventory());
         product.setName(productRequest.getName());
         productService.addProduct(product);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-  
-    @PutMapping("/{id}")
+
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
         Product updated = productService.updateProduct(id, updatedProduct);
         if (updated != null) {
@@ -70,7 +72,7 @@ public class ProductController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();

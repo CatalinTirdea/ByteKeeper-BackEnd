@@ -37,4 +37,17 @@ public class InventoryController {
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+//    @PutMapping(value="/edit/{id}", consumes="application/json", produces="application/json")
+//    public ResponseEntity<?> editInventory(@PathVariable Long id, @RequestBody Inventory inventoryRequest) {
+//        Inventory inventory = inventoryService.editInventory(id, inventoryRequest);
+//        if (inventory != null) {
+//
+//        }
+//    }
+
+    @DeleteMapping(value="/delete/{id}")
+    public void deleteInventory(@PathVariable Long id) {
+        inventoryService.deleteInventory(id);
+    }
 }
