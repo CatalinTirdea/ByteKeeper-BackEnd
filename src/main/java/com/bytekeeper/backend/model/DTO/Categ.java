@@ -1,4 +1,4 @@
-package com.bytekeeper.backend.controller;
+package com.bytekeeper.backend.model.DTO;
 
 public class Categ {
     private String name;
@@ -23,5 +23,8 @@ public class Categ {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Categ() {
     }
 }

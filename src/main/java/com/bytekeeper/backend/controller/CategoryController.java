@@ -1,5 +1,6 @@
 package com.bytekeeper.backend.controller;
 
+import com.bytekeeper.backend.model.DTO.Categ;
 import com.bytekeeper.backend.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.bytekeeper.backend.model.Category;
@@ -32,5 +33,4 @@ public class CategoryController {
 
         return jsonArray;
     }
-
 }

@@ -1,5 +1,7 @@
 package com.bytekeeper.backend.model;
 
+import com.bytekeeper.backend.model.DTO.Categ;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +18,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name = "Name")
     private String name;
 
@@ -24,7 +25,10 @@ public class Product {
     @Column(name = "Quantity")
     private Integer quantity;
 
+    @Column(name = "Price")
+    private Double price;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name="inventory_id")
     private Inventory inventory;
@@ -32,28 +36,74 @@ public class Product {
     @Transient
     private Long categoryId;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name="category_id")
     private Category category;
 
+    public Product(Long id, String name, Double price, Integer quantity, Category category) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.category = category;
+        this.price = price;
+    }
 
-    public void displayDetails() {
-        System.out.println("Detalii despre produs:");
-        System.out.println("ID: " + this.id);
-        System.out.println("Nume: " + this.name);
-        System.out.println("Cantitate: " + this.quantity);
+    public Product() {
+    }
+
+    public Product(String name, Double price, Integer quantity, Category category) {
+        this.name = name;
+        this.quantity = quantity;
+        this.category = category;
+        this.price = price;
+    }
+    public Product(String name, Double price, Integer quantity) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
     }
 
 
-    public void changeProduct(String newName, Integer newQuantity) {
-        if (newName != null) {
-            this.name = newName;
-        }
+    public Long getId() {
+        return id;
+    }
 
-        if (newQuantity != null) {
-            this.quantity = newQuantity;
-        }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 
     public void setCategory(Category category) {
@@ -66,5 +116,13 @@ public class Product {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

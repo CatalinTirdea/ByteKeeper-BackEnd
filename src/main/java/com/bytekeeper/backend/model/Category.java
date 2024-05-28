@@ -1,5 +1,6 @@
 package com.bytekeeper.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -15,8 +16,17 @@ public class Category {
     @Column(name = "Name")
     private String name;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "category")
     private Set<Product> products = new HashSet<>();
+
+    public Category(String name, Long id) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Category() {
+    }
 
     public Long getId() {
         return id;

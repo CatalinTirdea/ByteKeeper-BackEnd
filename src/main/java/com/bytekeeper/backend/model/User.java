@@ -1,5 +1,6 @@
 package com.bytekeeper.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,10 @@ public class User {
     @Column(name = "Password")
     private String password;
 
+    public User() {
+    }
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<Inventory> inventories;
 

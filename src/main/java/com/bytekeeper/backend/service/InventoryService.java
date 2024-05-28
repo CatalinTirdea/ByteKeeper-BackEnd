@@ -33,8 +33,6 @@ public class InventoryService {
         return repository.findById(id)
                 .map(inventory -> {
                     inventory.setName(newInventory.getName());
-                    inventory.setUser(newInventory.getUser());
-                    inventory.setProducts(newInventory.getProducts());
                     return repository.save(inventory);
                 }).orElse(null);
     }

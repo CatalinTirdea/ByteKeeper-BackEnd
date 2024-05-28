@@ -10,39 +10,37 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository;
+    private final ProductRepository repository;
 
     @Autowired
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
-    public Product saveProduct(Product product) {
-        return productRepository.save(product);
+    public ProductService(ProductRepository repository) {
+        this.repository = repository;
     }
 
     public Optional<Product> getProductById(Long id) {
-        return productRepository.findById(id);
+        return repository.findById(id);
     }
 
     public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+        repository.deleteById(id);
     }
 
     public void addProduct(Product product) {
-        productRepository.save(product);
+        repository.save(product);
     }
 
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return repository.findAll();
     }
 
     public Product updateProduct(Long id, Product updatedProduct) {
-        Optional<Product> optionalProduct = productRepository.findById(id);
-        if (optionalProduct.isPresent()) {
-            updatedProduct.setId(id);
-            return productRepository.save(updatedProduct);
-        }
-        return null;
+        return repository.findById(id)
+                .map(product -> {
+                    product.setName(updatedProduct.getName());
+                    product.setPrice(updatedProduct.getPrice());
+//                    product.setQuantity(updatedProduct.getQuantity());
+//                    product.setCategory(updatedProduct.getCategory());
+                    return repository.save(product);
+                }).orElse(null);
     }
 }
