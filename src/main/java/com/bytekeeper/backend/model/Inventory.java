@@ -3,8 +3,8 @@ package com.bytekeeper.backend.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -17,14 +17,15 @@ public class Inventory {
     @Column(name = "Name")
     private String name;
 
+    @Column(name="Visibility")
+    private String visibility;
+
     @OneToMany(mappedBy="inventory")
     private List<Product> products;
 
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
-
-
 
     public void setUser(User user) {
         this.user = user;
