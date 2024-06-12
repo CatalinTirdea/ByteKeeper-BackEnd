@@ -74,7 +74,7 @@ public class InventoryController {
 
     @PostMapping(value="/add", consumes="application/json", produces="application/json")
     public ResponseEntity<?> addInventory(@RequestBody InventoryDTO inventoryRequest) {
-        Inventory inventory = new Inventory(inventoryRequest.getName());
+        Inventory inventory = new Inventory(inventoryRequest.getName(), inventoryRequest.getVisibility());
         inventoryService.addInventory(inventory);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -82,7 +82,7 @@ public class InventoryController {
 
     @PutMapping(value="/edit/{id}", consumes="application/json", produces="application/json")
     public ResponseEntity<?> editInventory(@PathVariable Long id, @RequestBody InventoryDTO inventoryRequest) {
-        Inventory inventory = inventoryService.editInventory(id, new Inventory(inventoryRequest.getName()));
+        Inventory inventory = inventoryService.editInventory(id, new Inventory(inventoryRequest.getName(), inventoryRequest.getVisibility()));
         if (inventory != null) {
             return ResponseEntity.ok(inventory);
         }
