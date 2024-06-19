@@ -23,4 +23,7 @@ Proiectul nostru înglobează o aplicație de tip Inventar ce se adresează pers
 11. **As a user, I want to have a dedicated page for inventories with a card view of the lists.**
 12. **As a user, I want to search within the application.**
 
+## Backlog:
+
+
 <img src="https://github.com/CatalinTirdea/ByteKeeper-BackEnd/blob/master/ByteKeeper.png">
