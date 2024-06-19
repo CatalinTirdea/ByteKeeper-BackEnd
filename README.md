@@ -6,7 +6,7 @@
 - Tindea Cătălin
 
 ## Epic Story:
-Proiectul nostru înglobează o aplicație de tip Inventar ce se adresează persoanelor ce doresc să aibă o evidență asupra lucrurilor pe care le dețin, cât și o evidență asupra investițiilor făcute, având la dispoziție un environment complet pentru acest tip de evidență.
+Proiectul nostru înglobează o aplicație de tip Inventar ce se adresează persoanelor ce doresc să aibă o evidență asupra lucrurilor pe care le dețin, cât și o evidență asupra investițiilor făcute, având la dispoziție un environment complet pentru a-si realiza propriul "dulap" virtual.
 
 ## User Stories:
 1. **As a user, I want to add a new inventory.**
