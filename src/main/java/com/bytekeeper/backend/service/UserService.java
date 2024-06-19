@@ -21,24 +21,34 @@ public class UserService {
         return repository.findAll();
     }
 
-    public Optional<User> getUserByToken(String token) {
+//    public Optional<User> getUserByToken(String token) {
+//        var users = getAllUsers();
+//        for (var u : users) {
+//            if (u.getToken().equals(token)) {
+//                return Optional.of(u);
+//            }
+//        }
+//        return Optional.empty();
+//    }
+
+    public void addUser(User user) {
+//        var users = getAllUsers();
+//        for (var u : users) {
+//            if (u.getToken().equals(user.getToken())) {
+//                return;
+//            }
+//        }
+        repository.save(user);
+    }
+
+    public Optional<User> getUserByMail(String mail) {
         var users = getAllUsers();
         for (var u : users) {
-            if (u.getToken().equals(token)) {
+            if (u.getMail().equals(mail)) {
                 return Optional.of(u);
             }
         }
         return Optional.empty();
-    }
-
-    public void addUser(User user) {
-        var users = getAllUsers();
-        for (var u : users) {
-            if (u.getToken().equals(user.getToken())) {
-                return;
-            }
-        }
-        repository.save(user);
     }
 
 }

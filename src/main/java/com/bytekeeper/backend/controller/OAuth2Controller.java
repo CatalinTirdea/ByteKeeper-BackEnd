@@ -27,7 +27,12 @@ in frontend trebuie sa faceti
  */
 @RestController
 public class OAuth2Controller {
-    private UserService userService;
+    private final UserService userService;
+
+    public OAuth2Controller(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/oauth2/callback")
     public ResponseEntity<String> handleGoogleCallback(@RequestParam("code") String code) throws ParseException {
         RestTemplate restTemplate = new RestTemplate();
