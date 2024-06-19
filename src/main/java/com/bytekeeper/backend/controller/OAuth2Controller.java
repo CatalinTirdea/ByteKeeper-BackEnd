@@ -33,7 +33,7 @@ public class OAuth2Controller {
         this.userService = userService;
     }
 
-    @GetMapping("/oauth2/callback")
+    @GetMapping(value="/oauth2/callback", produces = "application/json")
     public ResponseEntity<String> handleGoogleCallback(@RequestParam("code") String code) throws ParseException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
