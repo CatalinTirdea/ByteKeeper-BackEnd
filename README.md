@@ -22,3 +22,5 @@ Proiectul nostru înglobează o aplicație de tip Inventar ce se adresează pers
 10. **As a user, I want to have a contact form to send messages in case of an issue with the application.**
 11. **As a user, I want to have a dedicated page for inventories with a card view of the lists.**
 12. **As a user, I want to search within the application.**
+
+<img src="https://github.com/CatalinTirdea/ByteKeeper-BackEnd/blob/master/ByteKeeper.png">
