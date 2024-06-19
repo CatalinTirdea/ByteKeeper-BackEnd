@@ -1,5 +1,6 @@
 package com.bytekeeper.backend.service;
 
+import com.bytekeeper.backend.model.Product;
 import com.bytekeeper.backend.model.User;
 import com.bytekeeper.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,24 +21,27 @@ public class UserService {
     public List<User> getAllUsers() {
         return repository.findAll();
     }
+    public Optional<User> getUserById(Long id) {
+        return repository.findById(id);
+    }
 
-//    public Optional<User> getUserByToken(String token) {
-//        var users = getAllUsers();
-//        for (var u : users) {
-//            if (u.getToken().equals(token)) {
-//                return Optional.of(u);
-//            }
-//        }
-//        return Optional.empty();
-//    }
+    public Optional<User> getUserByToken(String token) {
+        var users = getAllUsers();
+        for (var u : users) {
+            if (u.getToken().equals(token)) {
+                return Optional.of(u);
+            }
+        }
+        return Optional.empty();
+    }
 
     public void addUser(User user) {
-//        var users = getAllUsers();
-//        for (var u : users) {
-//            if (u.getToken().equals(user.getToken())) {
-//                return;
-//            }
-//        }
+        var users = getAllUsers();
+        for (var u : users) {
+            if (u.getToken().equals(user.getToken())) {
+                return;
+            }
+        }
         repository.save(user);
     }
 

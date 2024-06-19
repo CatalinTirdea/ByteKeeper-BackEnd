@@ -42,6 +42,12 @@ public class Inventory {
         this.visibility = visibility;
     }
 
+    public Inventory(String name, String visibility, User user) {
+        this.name = name;
+        this.visibility = visibility;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }

@@ -34,17 +34,17 @@ public class OAuth2Controller {
     }
 
     @GetMapping(value="/oauth2/callback", produces = "application/json")
-    public ResponseEntity<String> handleGoogleCallback(@RequestParam("code") String code) throws ParseException {
+    public String handleGoogleCallback(@RequestParam("code") String code) throws ParseException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("code", code);
-        map.add("client_id", "client id");
-        map.add("client_secret", "client secret");
-        map.add("redirect_uri", "redirect uri");
-        map.add("grant_type", "");
+        map.add("client_id", "140352902475-5hgpbh9obko5f7fd5h51sebbo830olg4.apps.googleusercontent.com");
+        map.add("client_secret", "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");
+        map.add("redirect_uri", "http://localhost:8080/oauth2/callback");
+        map.add("grant_type", "authorization_code");
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
@@ -64,6 +64,8 @@ public class OAuth2Controller {
         String token = claims.getSubject();
         userService.addUser(new User(name, email, token));
 
-        return ResponseEntity.ok(token);  // returneaza tokenul userului pentru a-l salva in session storage
+//        return ResponseEntity.ok(token);  // returneaza tokenul userului pentru a-l salva in session storage
+        String redirectString = "redirect:localhost:3000/?token=" + token;
+        return redirectString;
     }
 }

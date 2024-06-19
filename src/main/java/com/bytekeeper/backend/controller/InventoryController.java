@@ -74,6 +74,7 @@ public class InventoryController {
 
     @PostMapping(value="/add", consumes="application/json", produces="application/json")
     public ResponseEntity<?> addInventory(@RequestBody InventoryDTO inventoryRequest) {
+//        var user = userService.getUserByToken(inventoryRequest.getUserId());
         Inventory inventory = new Inventory(inventoryRequest.getName(), inventoryRequest.getVisibility());
         inventoryService.addInventory(inventory);
 
