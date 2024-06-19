@@ -16,25 +16,68 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "FirstName")
-    private String firstName;
-
-    @Column(name = "LastName")
-    private String lastName;
+    @Column(name = "Name")
+    private String name;
 
     @Column(name = "Mail")
     private String mail;
 
-    @Column(name = "Password")
-    private String password;
-
-    public User() {
-    }
+    @Column(name = "AuthToken")
+    private String token;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<Inventory> inventories;
 
+    public User(String name, String mail, String token) {
+        this.name = name;
+        this.mail = mail;
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public List<Inventory> getInventories() {
+        return inventories;
+    }
+
+    public void setInventories(List<Inventory> inventories) {
+        this.inventories = inventories;
+    }
+
+
+    public User() {
+    }
     public void deleteInventory(Inventory inventory) {
         inventories.remove(inventory);  // Stergem invetarul
         inventory.setUser(null); // Stergem userul de la inventarul respectiv

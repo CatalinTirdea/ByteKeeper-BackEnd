@@ -36,6 +36,9 @@ public class Product {
     @Transient
     private Long categoryId;
 
+    @Transient
+    private Long inventoryId;
+
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name="category_id")
@@ -47,6 +50,15 @@ public class Product {
         this.quantity = quantity;
         this.category = category;
         this.price = price;
+    }
+
+    public Product(String name, Integer quantity, Double price, Inventory inventory, Category category) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.inventory = inventory;
+        this.categoryId = categoryId;
+        this.category = category;
     }
 
     public Product() {
@@ -69,6 +81,13 @@ public class Product {
         this.price = price;
     }
 
+    public Long getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(Long inventoryId) {
+        this.inventoryId = inventoryId;
+    }
 
     public Long getId() {
         return id;

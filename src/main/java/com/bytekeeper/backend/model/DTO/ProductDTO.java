@@ -7,6 +7,7 @@ public class ProductDTO {
     private InventoryDTO inventory;
     private Categ category;
     private Long categoryId;
+    private Long inventoryId;
     private Double price;
 
     public ProductDTO(Long id, String name, Double price, Integer quantity, Categ category) {
@@ -14,6 +15,14 @@ public class ProductDTO {
         this.name = name;
         this.quantity = quantity;
         this.category = category;
+        this.price = price;
+    }
+
+    public ProductDTO(String name, Integer quantity, Long categoryId, Long inventoryId, Double price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.categoryId = categoryId;
+        this.inventoryId = inventoryId;
         this.price = price;
     }
 
@@ -33,6 +42,14 @@ public class ProductDTO {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Long getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(Long inventoryId) {
+        this.inventoryId = inventoryId;
     }
 
     public ProductDTO(Long id, String name, Double price, Integer quantity, Long categoryId) {

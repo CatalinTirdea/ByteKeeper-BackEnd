@@ -4,13 +4,18 @@ import java.util.List;
 
 public class UserDTO {
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String name;
     private String mail;
-    private String password;
+    private String token;
     private List<InventoryDTO> inventories;
 
     public UserDTO() {
+    }
+
+    public UserDTO(String name, String mail, String token) {
+        this.name = name;
+        this.mail = mail;
+        this.token = token;
     }
 
     public Long getId() {
@@ -21,20 +26,12 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMail() {
@@ -45,12 +42,12 @@ public class UserDTO {
         this.mail = mail;
     }
 
-    public String getPassword() {
-        return password;
+    public String getToken() {
+        return token;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public List<InventoryDTO> getInventories() {
@@ -58,15 +55,6 @@ public class UserDTO {
     }
 
     public void setInventories(List<InventoryDTO> inventories) {
-        this.inventories = inventories;
-    }
-
-    public UserDTO(Long id, String firstName, String lastName, String mail, String password, List<InventoryDTO> inventories) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mail = mail;
-        this.password = password;
         this.inventories = inventories;
     }
 }

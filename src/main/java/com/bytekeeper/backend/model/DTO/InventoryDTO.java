@@ -17,6 +17,17 @@ public class InventoryDTO {
         this.products = products;
     }
 
+    public InventoryDTO(String name, String visibility) {
+        this.name = name;
+        this.visibility = visibility;
+    }
+
+    public InventoryDTO(Long id, String name, String visibility) {
+        this.id = id;
+        this.name = name;
+        this.visibility = visibility;
+    }
+
     public InventoryDTO() {
     }
 
