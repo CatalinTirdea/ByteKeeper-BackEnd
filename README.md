@@ -8,6 +8,8 @@
 - Crăciun Florin
 - Tirdea Cătălin
 
+[![Video](https://img.youtube.com/vi/3ux_9ni1MPs/maxresdefault.jpg)](https://www.youtube.com/watch?v=3ux_9ni1MPs)
+
 ## Epic Story
 Our project encompasses an Inventory application aimed at individuals who want to keep track of their belongings and investments, providing a complete environment to create their own virtual "wardrobe."
 
