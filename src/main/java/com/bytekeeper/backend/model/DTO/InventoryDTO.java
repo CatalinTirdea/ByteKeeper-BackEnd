@@ -1,5 +1,6 @@
 package com.bytekeeper.backend.model.DTO;
 
+import com.bytekeeper.backend.model.Product;
 import com.bytekeeper.backend.model.User;
 
 import java.util.List;
@@ -18,21 +19,11 @@ public class InventoryDTO {
         this.products = products;
     }
 
-    public InventoryDTO(String name, String visibility) {
-        this.name = name;
-        this.visibility = visibility;
-    }
-
-    public InventoryDTO(String name, String visibility, Long userId) {
-        this.name = name;
-        this.visibility = visibility;
-        this.userId = userId;
-    }
-
-    public InventoryDTO(Long id, String name, String visibility) {
+    public InventoryDTO(Long id, String name, List<ProductDTO> products, String viz) {
         this.id = id;
         this.name = name;
-        this.visibility = visibility;
+        this.products = products;
+        this.visibility = viz;
     }
 
     public InventoryDTO() {

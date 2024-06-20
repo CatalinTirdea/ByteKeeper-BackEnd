@@ -1,6 +1,7 @@
 package com.bytekeeper.backend.controller;
 
 import com.bytekeeper.backend.model.DTO.Categ;
+import com.bytekeeper.backend.model.DTO.InventoryDTO;
 import com.bytekeeper.backend.model.DTO.ProductDTO;
 import com.bytekeeper.backend.model.Product;
 import com.bytekeeper.backend.model.Category;
@@ -42,7 +43,8 @@ public class ProductController {
                 new Categ(
                         prod.getCategory().getName(),
                         prod.getCategory().getId()
-                )
+                ),
+                prod.getInventoryId()
         );
     }
 

@@ -46,8 +46,10 @@ public class InventoryController {
                                 new Categ(
                                         prod.getCategory().getName(),
                                         prod.getCategory().getId()
-                                )
-                        )).collect(Collectors.toList())
+                                ),
+                                prod.getInventoryId()
+                        )).collect(Collectors.toList()),
+                inv.getVisibility()
         );
     }
 
