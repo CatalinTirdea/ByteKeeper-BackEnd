@@ -4,12 +4,7 @@ import com.bytekeeper.backend.model.User;
 import com.bytekeeper.backend.service.UserService;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import org.apache.coyote.Response;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.jwt.JwtClaimAccessor;
+import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.Map;
 
 /*
@@ -34,7 +30,7 @@ public class OAuth2Controller {
     }
 
     @GetMapping(value="/oauth2/callback", produces = "application/json")
-    public String handleGoogleCallback(@RequestParam("code") String code) throws ParseException {
+    public ResponseEntity<Void> handleGoogleCallback(@RequestParam("code") String code) throws ParseException, URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -64,8 +60,9 @@ public class OAuth2Controller {
         String token = claims.getSubject();
         userService.addUser(new User(name, email, token));
 
-//        return ResponseEntity.ok(token);  // returneaza tokenul userului pentru a-l salva in session storage
-        String redirectString = "redirect:localhost:3000/?token=" + token;
-        return redirectString;
+        String url = "localhost:3000/?token=" + token;
+        var header = new HttpHeaders();
+        header.setLocation(new URI(url));
+        return new ResponseEntity<>(header, HttpStatus.FOUND);
     }
 }
