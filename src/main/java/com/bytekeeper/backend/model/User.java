@@ -22,25 +22,26 @@ public class User {
     @Column(name = "Mail")
     private String mail;
 
-    @Column(name = "AuthToken")
-    private String token;
+    @Column(name="Password")
+    private String password;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<Inventory> inventories;
 
-    public User(String name, String mail, String token) {
+    public User(String mail, String name, String password) {
         this.name = name;
         this.mail = mail;
-        this.token = token;
+        this.password = password;
     }
 
-    public String getToken() {
-        return token;
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {

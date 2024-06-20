@@ -6,16 +6,20 @@ public class UserDTO {
     private Long id;
     private String name;
     private String mail;
-    private String token;
+    private String password;
     private List<InventoryDTO> inventories;
 
     public UserDTO() {
     }
 
-    public UserDTO(String name, String mail, String token) {
+    public UserDTO(String mail, String name, String password) {
         this.name = name;
         this.mail = mail;
-        this.token = token;
+        this.password = password;
+    }
+    public UserDTO(String mail, String password) {
+        this.mail = mail;
+        this.password = password;
     }
 
     public Long getId() {
@@ -42,12 +46,12 @@ public class UserDTO {
         this.mail = mail;
     }
 
-    public String getToken() {
-        return token;
+    public String getPassword() {
+        return password;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<InventoryDTO> getInventories() {
