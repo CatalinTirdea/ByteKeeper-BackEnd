@@ -1,5 +1,6 @@
 package com.bytekeeper.backend.model;
 
+import com.bytekeeper.backend.model.DTO.ProductDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,6 +22,9 @@ public class Inventory {
     @Column(name="Visibility")
     private String visibility;
 
+    @Transient
+    private Long userId;
+
     @JsonManagedReference
     @OneToMany(mappedBy="inventory")
     private List<Product> products;
@@ -34,6 +38,22 @@ public class Inventory {
         this.name = name;
     }
 
+    public Inventory(Long id, String name, List<Product> products, String visibility, Long userId) {
+        this.id = id;
+        this.name = name;
+        this.visibility = visibility;
+        this.userId = userId;
+        this.products = products;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     public Inventory() {
     }
 
@@ -42,10 +62,10 @@ public class Inventory {
         this.visibility = visibility;
     }
 
-    public Inventory(String name, String visibility, User user) {
+    public Inventory(String name, String visibility, Long userId) {
         this.name = name;
         this.visibility = visibility;
-        this.user = user;
+        this.userId = userId;
     }
 
     public Long getId() {

@@ -52,6 +52,15 @@ public class Product {
         this.price = price;
     }
 
+    public Product(Long id, String name, Double price, Integer quantity, Category category, Long invId) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.category = category;
+        this.price = price;
+        this.inventoryId = invId;
+    }
+
     public Product(String name, Integer quantity, Double price, Inventory inventory, Category category) {
         this.name = name;
         this.quantity = quantity;

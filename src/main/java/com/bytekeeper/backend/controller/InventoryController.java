@@ -49,7 +49,8 @@ public class InventoryController {
                                 ),
                                 prod.getInventoryId()
                         )).collect(Collectors.toList()),
-                inv.getVisibility()
+                inv.getVisibility(),
+                inv.getUserId()
         );
     }
 
@@ -76,8 +77,11 @@ public class InventoryController {
 
     @PostMapping(value="/add", consumes="application/json", produces="application/json")
     public ResponseEntity<?> addInventory(@RequestBody InventoryDTO inventoryRequest) {
-//        var user = userService.getUserByToken(inventoryRequest.getUserId());
-        Inventory inventory = new Inventory(inventoryRequest.getName(), inventoryRequest.getVisibility());
+        Inventory inventory = new Inventory(
+                inventoryRequest.getName(),
+                inventoryRequest.getVisibility(),
+                inventoryRequest.getUserId()
+        );
         inventoryService.addInventory(inventory);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();

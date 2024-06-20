@@ -13,17 +13,12 @@ public class InventoryDTO {
     private UserDTO user;
     private Long userId;
 
-    public InventoryDTO(Long id, String name, List<ProductDTO> products) {
-        this.id = id;
-        this.name = name;
-        this.products = products;
-    }
-
-    public InventoryDTO(Long id, String name, List<ProductDTO> products, String viz) {
+    public InventoryDTO(Long id, String name, List<ProductDTO> products, String viz, Long uId) {
         this.id = id;
         this.name = name;
         this.products = products;
         this.visibility = viz;
+        this.userId = uId;
     }
 
     public InventoryDTO() {
@@ -43,21 +38,6 @@ public class InventoryDTO {
 
     public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-    public InventoryDTO(Long id, String name, String visibility, List<ProductDTO> products) {
-        this.id = id;
-        this.name = name;
-        this.visibility = visibility;
-        this.products = products;
-    }
-
-    public InventoryDTO(Long id, String name, String visibility, List<ProductDTO> products, UserDTO user) {
-        this.id = id;
-        this.name = name;
-        this.visibility = visibility;
-        this.products = products;
-        this.user = user;
     }
 
     public Long getId() {
