@@ -19,7 +19,7 @@ Our project encompasses an Inventory application aimed at individuals who want t
 5. **As a user, I want to delete the inventory after it has been used.**
 6. **As a user, I want to save an inventory with all its details separately on my computer.**
 7. **As a user, I want to have a chart that provides a visual overview of the inventory.**
-8. **As a user, I want to log in to the application using Google.**
+8. **As a user, I want to log in to the application with email.**
 9. **As a user, I want to change the visibility of the inventory from public to private and vice versa.**
 10. **As a user, I want to have a contact form to send messages in case of an issue with the application.**
 11. **As a user, I want to have a dedicated page for inventories with a card view of the lists.**
