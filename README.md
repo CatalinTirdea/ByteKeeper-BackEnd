@@ -71,3 +71,5 @@ Our project encompasses an Inventory application aimed at individuals who want t
 - Create Charts for Inventory
 - Page Design (CSS)
 - Buttons for Each Action
+
+<img src="https://github.com/CatalinTirdea/ByteKeeper-BackEnd/blob/master/ByteKeeper.png">
