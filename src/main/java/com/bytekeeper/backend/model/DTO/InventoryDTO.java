@@ -13,12 +13,12 @@ public class InventoryDTO {
     private UserDTO user;
     private Long userId;
 
-    public InventoryDTO(Long id, String name, List<ProductDTO> products, String viz, Long uId) {
+    public InventoryDTO(Long id, String name, List<ProductDTO> products, String viz, Long userId) {
         this.id = id;
         this.name = name;
         this.products = products;
         this.visibility = viz;
-        this.userId = uId;
+        this.userId = userId;
     }
 
     public InventoryDTO() {
