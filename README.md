@@ -1,15 +1,17 @@
 # Proiect MDS - Bytekeeper
 
-## FrontEnd https://github.com/CatalinTirdea/ByteKeeper-FrontEnd
-## Echipa:
+## FrontEnd
+[ByteKeeper FrontEnd Repository](https://github.com/CatalinTirdea/ByteKeeper-FrontEnd)
+
+## Echipa
 - Miloși Elias
 - Crăciun Florin
 - Tirdea Cătălin
 
-## Epic Story:
-Proiectul nostru înglobează o aplicație de tip Inventar ce se adresează persoanelor ce doresc să aibă o evidență asupra lucrurilor pe care le dețin, cât și o evidență asupra investițiilor făcute, având la dispoziție un environment complet pentru a-si realiza propriul "dulap" virtual.
+## Epic Story
+Our project encompasses an Inventory application aimed at individuals who want to keep track of their belongings and investments, providing a complete environment to create their own virtual "wardrobe."
 
-## User Stories:
+## User Stories
 1. **As a user, I want to add a new inventory.**
 2. **As a user, I want to add a product to the inventory.**
 3. **As a user, I want to modify the details of an individual product.**
@@ -23,7 +25,47 @@ Proiectul nostru înglobează o aplicație de tip Inventar ce se adresează pers
 11. **As a user, I want to have a dedicated page for inventories with a card view of the lists.**
 12. **As a user, I want to search within the application.**
 
-## Backlog:
+## Backlog
 
+### Model Creation
+- Category, Inventory, Product, User
 
-<img src="https://github.com/CatalinTirdea/ByteKeeper-BackEnd/blob/master/ByteKeeper.png">
+### Service Creation
+- Service for all models
+
+### Controller Creation
+- Controller for all models
+
+### DTO Creation
+- DTO for all models
+
+### Repository Creation
+- Repository for all models
+
+### Database Connection
+- PostgreSQL
+
+### Security
+- Spring Security
+- Login OAuth2 with Google
+- Controller for OAuth2
+
+### Proxy Configuration
+- Frontend -> Backend
+
+### Frontend
+- Create Pages:
+  - Home
+  - Contact
+  - Inventory
+  - Login
+- Create Navbar
+- Create Searchbar
+- Create Inventory Workspace
+- Create Callback Page for Login
+- Routing
+- Send JSON with Product/Inventory to Backend
+- Product Editing
+- Create Charts for Inventory
+- Page Design (CSS)
+- Buttons for Each Action
