@@ -82,6 +82,7 @@ public class InventoryController {
                 inventoryRequest.getVisibility(),
                 inventoryRequest.getUserId()
         );
+        System.out.println("\n\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n\n" + inventoryRequest.getUserId() + "\n\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n\n");
         inventoryService.addInventory(inventory);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();

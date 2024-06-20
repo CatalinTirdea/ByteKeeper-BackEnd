@@ -22,7 +22,7 @@ public class Inventory {
     @Column(name="Visibility")
     private String visibility;
 
-    @Transient
+    @Column(name="id_user")
     private Long userId;
 
     @JsonManagedReference
