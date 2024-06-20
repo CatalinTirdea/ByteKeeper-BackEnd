@@ -44,7 +44,7 @@ public class ProductController {
                         prod.getCategory().getName(),
                         prod.getCategory().getId()
                 ),
-                prod.getInventoryId()
+                prod.getInventory().getId()
         );
     }
 
