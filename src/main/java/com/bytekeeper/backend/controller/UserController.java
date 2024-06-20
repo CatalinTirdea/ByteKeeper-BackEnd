@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @PostMapping(value="/login", consumes="application/json", produces="application/json")
-    public ResponseEntity<?> login(@RequestBody UserDTO user) {
+    public ResponseEntity<Long> login(@RequestBody UserDTO user) {
         Optional<User> u = userService.getUserByMail(user.getMail());
         if (u.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -45,7 +45,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.getUserIdByMail(user.getMail()));
     }
 
 }

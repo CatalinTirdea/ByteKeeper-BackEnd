@@ -59,6 +59,16 @@ public class UserService {
         return Optional.empty();
     }
 
+    public Long getUserIdByMail(String mail) {
+        var users = getAllUsers();
+        for (var u : users) {
+            if (u.getMail().equals(mail)) {
+                return u.getId();
+            }
+        }
+        return -1L;
+    }
+
     public boolean checkPassword(User user, String password) {
         return encoder.matches(password, user.getPassword());
     }
