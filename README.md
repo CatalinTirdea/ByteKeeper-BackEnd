@@ -73,3 +73,5 @@ Our project encompasses an Inventory application aimed at individuals who want t
 - Buttons for Each Action
 
 <img src="https://github.com/CatalinTirdea/ByteKeeper-BackEnd/blob/master/ByteKeeper.png">
+<img width="864" alt="Screenshot 2024-06-21 at 19 38 16" src="https://github.com/CatalinTirdea/ByteKeeper-BackEnd/assets/116068101/91d3b400-04ec-409a-84ab-240d6ea2444b">
+
